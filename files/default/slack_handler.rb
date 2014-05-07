@@ -43,7 +43,7 @@ class Chef::Handler::Slack < Chef::Handler
   def report
     begin
       Timeout::timeout(@timeout) do
-        Chef::Log.debug("Sending report to Slack ##{config[:channel]}@#{team}.slack.com")
+        Chef::Log.debug("Sending report to Slack #{config[:channel]}@#{team}.slack.com")
         if fail_only
           unless run_status.success?
             slack_message("Chef client run #{run_status_human_readable} on #{run_status.node.name} #{run_status_detail}")
